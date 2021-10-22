@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "TreepLikeDream project",
   "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,13 +20,5 @@
   "bugs": {
     "url": "https://github.com/Akhadova/TripLikeDream/issues"
   },
-<<<<<<< HEAD
-  "homepage": "https://github.com/Akhadova/TripLikeDream#readme",
-  "dependencies": {
-    "express": "^4.17.1",
-    "pug": "^3.0.2"
-  }
-=======
   "homepage": "https://github.com/Akhadova/TripLikeDream#readme"
->>>>>>> 03b9e451c5b0bf493c5a3acc59066517691e1950
 }
