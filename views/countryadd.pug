@@ -1,0 +1,13 @@
+extends layout.pug
+block content
+   <center>
+      <pre>
+         <form action="/post" method="POST" enctype="multipart/form-data">
+         <label><b>Country Name</b></label>
+         <input type="text" name="name" placeholder="input country name">
+         <label><b>Image</b></label>
+         <input type="file" name="image">
+         <button type="submit">Save</button>
+         </form>
+      </pre>
+   </center>

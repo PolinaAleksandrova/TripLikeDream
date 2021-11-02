@@ -1,7 +1,15 @@
-doctype html
-html
-  include layout.html
-  head
-    style
-      include main.css
-  body
+extends layout.pug
+
+block title
+    <title>TreepLikeDream</title>
+
+
+block content
+    mixin countrylist(name, image)
+        .countrylist
+         img(src=image)
+         p= name
+
+    <h1>Країни</h1>
+    each item in items
+        +countrylist(item.name,item.image)

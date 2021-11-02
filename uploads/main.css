@@ -109,3 +109,13 @@ header .btns .btn_blue{
 header .btns .btn_blue:hover{
   background-color: #66ACD3;
 }
+.countrylist{
+  display: inline-block;
+  padding: 50px;
+  margin-left: 60px;
+
+}
+img{
+  width: 360;
+  height: 120;
+}
