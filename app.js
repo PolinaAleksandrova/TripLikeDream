@@ -22,7 +22,7 @@ var upload = multer ({
         }
     })
 })
-app.use(express.static("uploads"));
+app.use(express.static("uploads")) ;
 console.log(__dirname);
 app.post('/post', upload.single('image'), (req, res)=>{
     console.log(req.file);
