@@ -1,0 +1,19 @@
+extends layout.pug
+
+block title
+    <title>TreepLikeDream</title>
+
+
+block content
+    mixin placelist(name)
+        .countrylist
+            a(href='place?'+name)
+                p=name
+
+    .aboutcountry
+            p #{country.name}
+            p #{country.about}
+
+    <center><h1>Визначні місця</h1></center>
+    each item in items
+        +placelist(item.name)

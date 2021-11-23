@@ -1,0 +1,19 @@
+extends layout.pug
+block content
+   <center>
+      <pre>
+      <form action="/placepost" method="POST">
+         <label><b>Place Name</b></label>
+         <input type="text" name="name" placeholder="input place name">
+         <select name = "country">
+         each item in items
+             option(value=item.id) #{item.name}
+         </select>
+         <select name = "category">
+         each category in categories
+             option(value=category.id) #{category.name}
+         </select>
+         <button type="submit">Save</button>
+         </form>
+      </pre>
+   </center>
