@@ -6,6 +6,7 @@ const reqString = {
 const  countrySchema = mongoose.Schema({
   name: reqString,
   image: reqString,
+  about: String,
 })
 
 module.exports = mongoose.model('country', countrySchema)

@@ -1,12 +1,16 @@
-const express = require("express");
-const app = express();
-var path = require("path");
-const mongoose = require('mongoose')
-const multer = require("multer");
+const express = require("express")
+const app = express()
+var path = require("path")
+const mongoose = require("mongoose")
+const multer = require("multer")
+var bodyParser = require("body-parser")
 const countrymodel = require('./schemas/country-schema')
-
+const categorymodel = require('./schemas/category-schema')
+const placemodel = require('./schemas/place-schema')
 app.set("view engine", "pug");
-var jsonParser = express.json();
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+
+var jsonParser = bodyParser.json({ extended: false });
 const mongoPath ='mongodb+srv://TLDuser:4fqtKZ622IuwsqW3@mongodbtld.ktryg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 mongoose.connect(mongoPath, {
 useNewUrlParser: true,
@@ -22,8 +26,7 @@ var upload = multer ({
         }
     })
 })
-app.use(express.static("uploads"));
-console.log(__dirname);
+app.use(express.static("uploads")) ;
 app.post('/post', upload.single('image'), (req, res)=>{
     console.log(req.file);
     var x = new countrymodel();
@@ -39,7 +42,36 @@ app.post('/post', upload.single('image'), (req, res)=>{
 
     })
 })
+app.post('/categorypost', jsonParser, (req, res)=>{
 
+    var x = new categorymodel();
+    x.name =req.body.name;
+    x.save((err, doc)=>{
+        if(!err){
+            console.log('saved succesfully')
+            res.redirect('/')
+        } else {
+            console.log(err);
+        }
+
+    })
+})
+app.post('/placepost', jsonParser, (req, res)=>{
+
+    var x = new placemodel();
+    x.name =req.body.name;
+    x.country = req.body.country;
+    x.category = req.body.category;
+    x.save((err, doc)=>{
+        if(!err){
+            console.log('saved succesfully')
+            res.redirect('/')
+        } else {
+            console.log(err);
+        }
+
+    })
+})
 app.get('/', jsonParser,(req,res)=>{
 
     countrymodel.find({}, function(err, docs){
@@ -49,8 +81,23 @@ app.get('/', jsonParser,(req,res)=>{
         })
 })
 })
+app.get('/placeadd', jsonParser,(req,res)=>{
 
-app.use("/CountryAdd", function(request, response){
+    countrymodel.find({}, function(err, docs){
+    categorymodel.find({}, function(err, documents){
+        res.render('placeadd', {
+            items : docs,
+            categories: documents
+        })
+})
+})
+})
+
+app.use("/categoryadd", function(request, response){
+    response.render("categoryadd", {})
+});
+
+app.use("/countryadd", function(request, response){
     response.render("countryadd", {})
 });
 
