@@ -92,7 +92,20 @@ app.get('/placeadd', jsonParser,(req,res)=>{
 })
 })
 })
+app.get('/country/:country', jsonParser,(req,res)=>{
+var countryi;
+countrymodel.findOne({name:req.params["country"]}, function(err, countryfind){
+countryi = countryfind.toObject();
+console.log(countryi);
+    placemodel.find({country: countryi._id}, function(err, place){
 
+        res.render('country', {
+            items : place,
+            country : countryfind
+        })
+})
+})
+})
 app.use("/categoryadd", function(request, response){
     response.render("categoryadd", {})
 });
