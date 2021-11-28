@@ -1,10 +1,11 @@
-const express = require('express');
-const morgan = require('morgan');
-const path = require('path');
+const express = require('express')
+const morgan = require('morgan')
+const path = require('path')
+const authRouter = require('./routes/authRouter')
 
 //Routes
-const defaultRout = require("./routes");
-const adminRout = require("./routes/admin");
+const defaultRout = require("./routes")
+const adminRout = require("./routes/admin")
 module.exports = class Applicaction {
     constructor() {
         this.app = express();
@@ -26,8 +27,9 @@ module.exports = class Applicaction {
     }
 
     routes() {
-         this.app.use('/', defaultRout);
-         this.app.use('/admin', adminRout);
+        this.app.use("/auth", authRouter)
+        this.app.use('/', defaultRout);
+        this.app.use('/admin', adminRout);
         this.app.use(express.static(path.join(__dirname, 'public')));
       this.app.use(express.static(path.join(__dirname, 'uploads')));
     }
