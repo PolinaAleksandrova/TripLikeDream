@@ -23,9 +23,13 @@ class authController {
             }
             const username = req.body.login
             const password = req.body.password
+            const passwordRepeat = req.body.passwordRepeat
             const candidate = await User.findOne({username})
             if (candidate) {
-                return "Пользователь с таким именем уже существует"
+                return "Користувач з таким логіном зареєстрованний"
+            }
+            if(password != passwordRepeat){
+                return "Паролі не співпадають"
             }
             const hashPassword = bcrypt.hashSync(password, 7);
             const userRole = await Role.findOne({value: "USER"})
@@ -44,11 +48,11 @@ class authController {
             const password = req.body.password
             const user = await User.findOne({username})
             if (!user) {
-                return `Пользователь ${username} не найден`
+                return `Неправильний логін`
             }
             const validPassword = bcrypt.compareSync(password, user.password)
             if (!validPassword) {
-                return "Введен неверный пароль"
+                return "Неправильний пароль"
             }
             const token = generateAccessToken(user._id, user.roles)
             return "1"

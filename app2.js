@@ -15,7 +15,7 @@ module.exports = class Applicaction {
     }
 
     settings() {
-        this.app.set('port', 3000);
+        this.app.set('port', 4000);
         this.app.set('views', path.join(__dirname, 'views'));
         this.app.set('view engine', '.pug');
     }
