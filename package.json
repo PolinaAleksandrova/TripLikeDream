@@ -2,7 +2,7 @@
   "name": "treaplikedream",
   "version": "1.0.0",
   "description": "TreepLikeDream project",
-  "main": "app.js",
+  "main": "app2.js",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
