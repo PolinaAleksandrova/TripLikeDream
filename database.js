@@ -6,6 +6,6 @@ module.exports = async function connect(){
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
-
+  console.log('>>> Database is running')
   return mongoose
 }

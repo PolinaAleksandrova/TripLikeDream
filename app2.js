@@ -2,6 +2,7 @@ const express = require('express')
 const morgan = require('morgan')
 const path = require('path')
 //Routes
+const authRouter = require('./routes/authRouter')
 const defaultRout = require("./routes")
 const adminRout = require("./routes/admin")
 module.exports = class Applicaction {
@@ -12,7 +13,7 @@ module.exports = class Applicaction {
         this.routes();
     }
     settings() {
-        this.app.set('port', 3000);
+        this.app.set('port', 4000);
         this.app.set('views', path.join(__dirname, 'views'));
         this.app.set('view engine', '.pug');
     }
@@ -22,6 +23,7 @@ module.exports = class Applicaction {
         this.app.use(express.json());
     }
     routes() {
+        this.app.use("/auth", authRouter)
         this.app.use('/', defaultRout);
         this.app.use('/admin', adminRout);
         this.app.use(express.static(path.join(__dirname, 'public')));
