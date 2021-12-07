@@ -1,117 +1,41 @@
-const express = require("express")
-const app = express()
-var path = require("path")
-const mongoose = require("mongoose")
-const multer = require("multer")
-var bodyParser = require("body-parser")
-const countrymodel = require('./schemas/country-schema')
-const categorymodel = require('./schemas/category-schema')
-const placemodel = require('./schemas/place-schema')
-app.set("view engine", "pug");
-var urlencodedParser = bodyParser.urlencoded({ extended: false });
+const express = require('express')
+const morgan = require('morgan')
+const path = require('path')
 
-var jsonParser = bodyParser.json({ extended: false });
-const mongoPath ='mongodb+srv://TLDuser:4fqtKZ622IuwsqW3@mongodbtld.ktryg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
-mongoose.connect(mongoPath, {
-useNewUrlParser: true,
-useUnifiedTopology: true
-})
-var upload = multer ({
-    storage: multer.diskStorage ({
-        destination: (req, file, cb)=>{
-            cb (null, "./uploads")
-        },
-        filename: function(req, file, callback) {
-            callback(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname))
-        }
-    })
-})
-app.use(express.static("uploads")) ;
-app.post('/post', upload.single('image'), (req, res)=>{
-    console.log(req.file);
-    var x = new countrymodel();
-    x.name =req.body.name;
-    x.image = req.file.filename;
-    x.save((err, doc)=>{
-        if(!err){
-            console.log('saved succesfully')
-            res.redirect('/')
-        } else {
-            console.log(err);
-        }
+//Routes
+const defaultRout = require("./routes")
+const adminRout = require("./routes/admin")
+module.exports = class Applicaction {
+    constructor() {
+        this.app = express();
+        this.settings();
+        this.middlewares();
+        this.routes();
+    }
 
-    })
-})
-app.post('/categorypost', jsonParser, (req, res)=>{
+    settings() {
+        this.app.set('port', 3000);
+        this.app.set('views', path.join(__dirname, 'views'));
+        this.app.set('view engine', '.pug');
+    }
 
-    var x = new categorymodel();
-    x.name =req.body.name;
-    x.save((err, doc)=>{
-        if(!err){
-            console.log('saved succesfully')
-            res.redirect('/')
-        } else {
-            console.log(err);
-        }
+    middlewares() {
+        this.app.use(morgan('dev'));
+        this.app.use(express.urlencoded({extended: false}));
+        this.app.use(express.json());
+    }
 
-    })
-})
-app.post('/placepost', jsonParser, (req, res)=>{
+    routes() {
+        this.app.use('/', defaultRout);
+        this.app.use('/admin', adminRout);
+        this.app.use(express.static(path.join(__dirname, 'public')));
+        this.app.use(express.static(path.join(__dirname, 'uploads')));
+    }
 
-    var x = new placemodel();
-    x.name =req.body.name;
-    x.country = req.body.country;
-    x.category = req.body.category;
-    x.save((err, doc)=>{
-        if(!err){
-            console.log('saved succesfully')
-            res.redirect('/')
-        } else {
-            console.log(err);
-        }
-
-    })
-})
-app.get('/', jsonParser,(req,res)=>{
-
-    countrymodel.find({}, function(err, docs){
-
-        res.render('index', {
-            items : docs
-        })
-})
-})
-app.get('/placeadd', jsonParser,(req,res)=>{
-
-    countrymodel.find({}, function(err, docs){
-    categorymodel.find({}, function(err, documents){
-        res.render('placeadd', {
-            items : docs,
-            categories: documents
-        })
-})
-})
-})
-app.get('/country/:country', jsonParser,(req,res)=>{
-var countryi;
-countrymodel.findOne({name:req.params["country"]}, function(err, countryfind){
-countryi = countryfind.toObject();
-console.log(countryi);
-    placemodel.find({country: countryi._id}, function(err, place){
-
-        res.render('country', {
-            items : place,
-            country : countryfind
-        })
-})
-})
-})
-app.use("/categoryadd", function(request, response){
-    response.render("categoryadd", {})
-});
-
-app.use("/countryadd", function(request, response){
-    response.render("countryadd", {})
-});
-
-app.listen(3000);
+    start() {
+        this.app.listen(this.app.get('port'), () => {
+            console.log('>>> Server is running at', this.app.get('port'));
+            return;
+        });
+    }
+}
