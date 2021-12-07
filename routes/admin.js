@@ -6,12 +6,9 @@ const categorymodel = require('../schemas/category-schema')
 const placemodel = require('../schemas/place-schema')
 const imagemodel = require('../schemas/image-schema')
 var path = require("path")
-
 var bodyParser = require("body-parser")
 var jsonParser = bodyParser.json({ extended: false });
 const router = Router();
-
-
 
 var upload = multer ({
     storage: multer.diskStorage ({
@@ -71,13 +68,13 @@ router.post('/placepost', jsonParser, (req, res)=>{
 router.get('/placeadd', jsonParser,(req,res)=>{
 
     countrymodel.find({}, function(err, docs){
-    categorymodel.find({}, function(err, documents){
-        res.render('placeadd', {
-            items : docs,
-            categories: documents
+        categorymodel.find({}, function(err, documents){
+            res.render('placeadd', {
+                items : docs,
+                categories: documents
+            })
         })
-})
-})
+    })
 })
 router.get('/categorydelete', jsonParser,(req,res)=>{
 
@@ -85,13 +82,13 @@ router.get('/categorydelete', jsonParser,(req,res)=>{
         res.render('categorydelete', {
             items : category,
         })
-})
+    })
 })
 router.post('/catdelpost', jsonParser, (req, res)=>{
 
     categorymodel.find({}, function(err, category){
 
-})
+    })
 })
 router.get('/imgadd', jsonParser,(req,res)=>{
 
@@ -99,7 +96,7 @@ router.get('/imgadd', jsonParser,(req,res)=>{
         res.render('imgadd', {
             places : place
         })
-})
+    })
 })
 router.post('/imgadd', upload.single('image'),(req,res)=>{
     var x = new imagemodel();
@@ -127,5 +124,4 @@ router.use("/categoryadd", function(request, response){
 router.use("/countryadd", function(request, response){
     response.render("countryadd", {})
 });
-
 module.exports = router;

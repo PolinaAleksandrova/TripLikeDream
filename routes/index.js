@@ -5,76 +5,57 @@ var imagemodel = require('../schemas/image-schema')
 var bodyParser = require("body-parser")
 var jsonParser = bodyParser.json({ extended: false });
 const router = Router();
-
+var places;
+var mas;
 router.get('/', jsonParser,(req,res)=>{
     countrymodel.find({}, function(err, docs){
         res.render('index', {
             items : docs
         })
+    })
 })
-})
-var places;
-var mas;
 router.get('/country/:country', jsonParser,async(req,res)=>{
     countrymodel.findOne({name:req.params["country"]})
     .then(country => {
-
         placemodel.find({country: country._id})
         .then(async place => {
             mas = [place.length];
             for (var i in place){
                 await imagemodel.findOne({place: place[i]._id})
                 .then(image => {
-            mas[i] = image
+                    mas[i] = image
+                })
+                .catch(err => console.log('Caught:', err.message));
+            }
+            places = place;
+            return places;
+        })
+        .then(place => {
+            console.log("country._id " + country._id)
+            console.log("place " + place)
+            console.log("mas " + mas)
+            console.log("id " + mas[0].image)
+            res.render('country', {
+                country : country,
+                places: place,
+                imges: mas
+            })
         })
         .catch(err => console.log('Caught:', err.message));
-
-
-    }
-    places = place;
-
-return places;
-})
-.then(place => {
-    console.log("country._id " + country._id)
-    console.log("place " + place)
-    console.log("mas " + mas)
-    console.log("id " + mas[0].image)
-
-    res.render('country', {
-    country : country,
-    places: place,
-    imges: mas
     })
+    .catch(err => console.log('Caught:', err.message));
 })
-.catch(err => console.log('Caught:', err.message));
-})
-.catch(err => console.log('Caught:', err.message));
-})
-
-    /*var countryi;
-     countrymodel.findOne({name:req.params["country"]}, function(err, countryfind){
-        countryi = countryfind.toObject();
-            placemodel.find({country: countryi._id}, async function(err, place){
-                var mass = [place.length];
-                for (var i in place){
-                    await imagemodel.findOne({place: place[i]._id}, function(err, image){
-
-                mass[i] = image
-                console.log(mass)
-    })
-    }
-
-                console.log(mass)
-                console.log(mass.length)
-
-                await res.render('country', {
-                items : place,
-                country : countryfind,
-                img: mass
+router.get('/country/place/:place', jsonParser,(req,res)=>{
+    placemodel.findOne({name: req.params["place"]})
+    .then(async place => {
+        await imagemodel.find({place: place._id})
+        .then(image => {
+            res.render('place', {
+                places: place,
+                imges: image
+            })
         })
-
-
+        .catch(err => console.log('Caught:', err.message));
+    })
 })
-})*/
 module.exports = router;
