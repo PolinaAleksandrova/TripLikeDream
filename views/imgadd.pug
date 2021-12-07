@@ -5,10 +5,14 @@ block css
 block content
    <center>
       <pre>
-         <form action="/admin/countryadd" method="POST" enctype="multipart/form-data">
+         <form action="/admin/imgadd" method="POST" enctype="multipart/form-data">
          <label><b>Country Name</b></label>
-         <input type="text" name="name" placeholder="input country name">
+         <input type="text" name="name" placeholder="input image name">
          <label><b>Image</b></label>
+         <select name = "place">
+         each place in places
+             option(value=place.id) #{place.name}
+         </select>
          <input type="file" name="image">
          <button type="submit">Save</button>
          </form>
