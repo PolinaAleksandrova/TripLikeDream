@@ -1,8 +1,11 @@
 extends layout.pug
+block css
+   <link rel="stylesheet" type="text/css" href="../css/main.css" />
+
 block content
    <center>
       <pre>
-         <form action="/post" method="POST" enctype="multipart/form-data">
+         <form action="/admin/post" method="POST" enctype="multipart/form-data">
          <label><b>Country Name</b></label>
          <input type="text" name="name" placeholder="input country name">
          <label><b>Image</b></label>

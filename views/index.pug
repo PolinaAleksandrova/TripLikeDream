@@ -1,5 +1,8 @@
 extends layout.pug
 
+block css
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+
 block title
     <title>TreepLikeDream</title>
 
@@ -7,9 +10,10 @@ block title
 block content
     mixin countrylist(name, image)
         .countrylist
-         img(src=image)
-         p= name
+            a(href='country/'+name)
+                img(src=image)
+                p=name
 
-    <h1>Країни</h1>
+    <center><h1>Країни</h1></center>
     each item in items
         +countrylist(item.name,item.image)
