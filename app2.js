@@ -5,7 +5,6 @@ const path = require('path')
 const authRouter = require('./routes/authRouter')
 const defaultRout = require("./routes")
 const adminRout = require("./routes/admin")
-const authRouter = require('./routes/authRouter')
 const personalAreaRout = require('./routes/personalAreaRout')
 const adminAreaRout = require('./routes/adminAreaRout')
 

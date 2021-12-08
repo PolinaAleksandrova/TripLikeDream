@@ -123,10 +123,15 @@ img{
   height: 120;
 }
 h2{
-  color: #6a97b0;
+  color: #7DC6EF;
   text-align: center;
+  font-family: 'Century Gothic';
+  font-weight: normal;
 }
 span{
   color: red;
   text-align: center;
+}
+.needed_space{
+  width: 330px;
 }
