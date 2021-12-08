@@ -29,7 +29,7 @@ class authController {
                 return "Користувач з таким логіном зареєстрованний"
             }
             if(password != passwordRepeat){
-                return "Паролі не співпадають"
+                return "(паролі не співпадають)"
             }
             const hashPassword = bcrypt.hashSync(password, 7);
             const userRole = await Role.findOne({value: "USER"})
@@ -64,7 +64,7 @@ class authController {
     }
 
     async getUsers(req, res) {
-        try {      
+        try {
             const users = await User.find()
             res.json(users)
         } catch (e) {
