@@ -1,6 +1,6 @@
 .col-lg-4{
   position: sticky;
-  top: 20%;
+  top: 27%;
   left: 27%;
   transform: translate(-50%, -50%);
   width: 400px;
@@ -13,4 +13,33 @@ position: absolute;
 left: 55%;
 width: 1200px;
 height: 50%;
+}
+.round {
+    border-radius: 100px; /* Радиус скругления */
+    border: 3px solid #badff0; /* Параметры рамки */
+    box-shadow: 0 0 7px #87bed8; /* Параметры тени */
+    width: 120px;
+   }
+.col-lg-4 h2{
+  margin-left: -70px;
+  margin-top: 15px;
+}
+.col-lg-4 p{
+  font-family: "Montserrat";
+}
+.flags{
+
+  width: 500px;
+  height: 50px;
+  margin-left: 120px;
+}
+.img_countr{
+  width: 50px;
+  height: 50px;
+  top: 30%;
+}
+.flags h5{
+  margin-top: 50px;
+  font-family: "Montserrat";
+  margin-bottom: 15px;
 }

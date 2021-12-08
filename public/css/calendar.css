@@ -11,9 +11,9 @@ body {
   overflow:hidden;
   display:block;
   margin-bottom:10px;
-  box-shadow:0 0 10px #8CC4FA;
+  box-shadow:0 0 10px #a0c6ecc9;
   margin:0 auto;
-  margin-top:-260px;
+  margin-top:-290px;
   margin-left:840px;
   height: 280px;
 }
@@ -22,10 +22,10 @@ body {
   padding:0 10px 10px 10px;
   box-sizing:border-box!important;
   background:#94D7FF
-  background: -webkit-linear-gradient(#7DC6EF, #8CC4FA)!important;
-  background: -o-linear-gradient(#7DC6EF, #8CC4FA)!important;
-  background: -moz-linear-gradient(#7DC6EF, #8CC4FA)!important;
-  background: linear-gradient(#7DC6EF, #8CC4FA)!important;
+  background: -webkit-linear-gradient(#7fc4eb, #a0c6ecc9)!important;
+  background: -o-linear-gradient(#7fc4eb, #a0c6ecc9)!important;
+  background: -moz-linear-gradient(#7fc4eb, #a0c6ecc9)!important;
+  background: linear-gradient(#7fc4eb, #a0c6ecc9)!important;
 }
 
 .jzdcalt {
