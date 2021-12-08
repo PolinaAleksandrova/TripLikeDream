@@ -1,0 +1,33 @@
+{
+  "name": "treaplikedream",
+  "version": "1.0.0",
+  "description": "TreepLikeDream project",
+  "main": "app.js",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.13.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.12",
+    "multer": "^1.4.3",
+    "nodemon": "^2.0.15",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0"
+  },
+  "scripts": {
+    "start": "nodemon index.start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Akhadova/TripLikeDream.git"
+  },
+  "author": "Polina Aleksandrova, Yevheniia Akhadova, Artem Andriichenko, Yulia Berestova, Yevhenii Bezpalchenko, Mykyta Beskokotov, Rauf Seidaliev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Akhadova/TripLikeDream/issues"
+  },
+  "homepage": "https://github.com/Akhadova/TripLikeDream#readme"
+}

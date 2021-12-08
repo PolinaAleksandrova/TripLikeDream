@@ -1,0 +1,137 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  font-size: 16px;
+  min-width: 320px;
+  position: relative;
+  line-height: 1.65;
+  font-family: "Montserrat", sans-serif;
+  overflow-x: hidden;
+  opacity: 1;
+}
+
+img{
+  max-width: 100%;
+}
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+a{
+    color: black;
+    text-decoration: none;
+}
+header{
+  margin: 44px auto;
+  max-width: 85%;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -ms-align-items: center;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(52, 79, 121, .56);
+  justify-content: space-between;
+}
+
+header .logo{
+  max-width: 250px;
+}
+
+header .right_header{
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -ms-align-items: center;
+  align-items: center;
+}
+
+header .mnu_top{
+  list-style-type: none;
+}
+
+header .mnu_top li{
+  display: inline-block;
+  margin-right: 75px;
+}
+
+header .mnu_top li a{
+  display: block;
+  text-decoration: none;
+  color: #5588A5;
+  font-size: 18px;
+  font-weight: 600;
+  -webkit-transition: color .4s ease;
+  -o-transition: color .4s ease;
+   transition: color .4s ease;
+}
+
+header .mnu_top li a:hover{
+  color: #75BDE6;
+}
+
+header .btns{
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -ms-align-items: center;
+  align-items: center;
+}
+
+header .btns >a{
+  border-radius: 10px;
+  text-decoration: none;
+  -webkit-transition: all .4s ease;
+  -o-transition: all .4s ease;
+   transition: all .4s ease;
+}
+
+header .btns .btn_light{
+  color: #5588A5;
+  font-size: 18px;
+  font-weight: 500;
+  border: 1px solid #7DC6EF;
+  padding: 5px 48px;
+  margin-right: 30px;
+}
+
+header .btns .btn_light:hover{
+  background-color: #7DC6EF;
+}
+header .btns .btn_blue{
+  font-size: 16px;
+  color: #fff;
+  font-weight: 500;
+  padding: 9px 24px;
+  background-color: #7DC6EF;
+}
+
+header .btns .btn_blue:hover{
+  background-color: #66ACD3;
+}
+.countrylist{
+  display: inline-block;
+  padding: 50px;
+  margin-left: 60px;
+
+}
+img{
+  width: 360;
+  height: 120;
+}
+h2{
+  color: #6a97b0;
+  text-align: center;
+}
+span{
+  color: red;
+  text-align: center;
+}
+header .right_header{ 
+  margin-left: auto; 
+    margin-right: auto; 
+    width: 15em 
+}
