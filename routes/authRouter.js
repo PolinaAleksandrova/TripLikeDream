@@ -10,25 +10,59 @@ router.get('/registration', async (req, res) => {
 })
 router.post('/registration', async (req, res)=>{
     const err = await controller.registration(req, res) 
-    if(err == "Пользователь успешно зарегистрирован"){
+    var errLogin
+    var errPassword;
+    var errPasswordRepeat
+    var errPhoneNumber;
+
+    if(err == "Пошта неправильна"){
+        errLogin = err;
+    }
+    else if(err == "Користувач з таким логіном зареєстрованний"){
+        errLogin = err;
+    }
+    else if(err == "Пароль не може бути пустим"){
+        errPassword = err;
+    }
+    else if(err == "В паролі не повинно бути кирилиці"){
+        errPassword = err;
+    }
+    else if(err == "Паролі не співпадають"){
+        errPasswordRepeat = err;
+    }
+    else if(err == "Телефон неправильний"){
+        errPhoneNumber = err;
+    }
+    else if(err == "Пользователь успешно зарегистрирован"){
         res.redirect('/auth/login')
     }
-    res.render('registration', {err});
+    res.render('registration', { errLogin, errPassword, errPasswordRepeat, errPhoneNumber});
 })
-/*router.post('/registration', [
-    check('username', "Имя пользователя не может быть пустым").notEmpty(),
-    check('password', "Пароль должен быть больше 4 и меньше 11 символов").isLength({min:4, max:10})
-], controller.registration)*/
+
 router.get('/login', async (req, res) => {
     res.render('login', {});
 })
-//router.post('/login', controller.login)
 router.post('/login', async (req, res)=>{
     const err = await controller.login(req, res) 
-    if(err == 1){
-        res.redirect('../../')
+    var errLogin;
+    var errPassword;
+
+    if(err == 'Пошта неправильна'){
+        errLogin = err;
     }
-    res.render('login', {err});
+    else if(err == 'Користувач не знайден'){
+        errLogin = err;
+    }
+    else if(err == 'Неправильний пароль'){
+        errPassword = err;
+    }
+    else if(err == 1){
+        res.redirect('/AreaA/adminArea')
+    }
+    else if(err == 0){
+        res.redirect('/AreaP/personalArea')
+    }
+    res.render('login', { errLogin, errPassword})
 })
 router.get('/users', roleMiddleware(['ADMIN']), controller.getUsers)
 

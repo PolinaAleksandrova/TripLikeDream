@@ -5,6 +5,10 @@ const path = require('path')
 const authRouter = require('./routes/authRouter')
 const defaultRout = require("./routes")
 const adminRout = require("./routes/admin")
+const authRouter = require('./routes/authRouter')
+const personalAreaRout = require('./routes/personalAreaRout')
+const adminAreaRout = require('./routes/adminAreaRout')
+
 module.exports = class Applicaction {
     constructor() {
         this.app = express();
@@ -23,6 +27,8 @@ module.exports = class Applicaction {
         this.app.use(express.json());
     }
     routes() {
+        this.app.use("/AreaP", personalAreaRout)
+        this.app.use("/AreaA", adminAreaRout)
         this.app.use("/auth", authRouter)
         this.app.use('/', defaultRout);
         this.app.use('/admin', adminRout);
