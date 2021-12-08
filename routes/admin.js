@@ -22,6 +22,10 @@ var upload = multer ({
         }
     })
 })
+
+router.get('/', jsonParser,(req,res)=>{
+    res.render('admin', {})
+})
 router.post('/post', upload.single('image'), (req, res)=>{
     console.log(req.file);
     var x = new countrymodel();
