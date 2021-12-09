@@ -1,0 +1,121 @@
+
+block headerForRegist
+include headerForRegist.pug
+block css
+<link rel="stylesheet" type="text/css" href="../css/authStyle.css" />
+<link rel="stylesheet" type="text/css" href="../css/main.css" />
+<link rel="stylesheet" type="text/css" href="../css/personalAreaStyle.css" />
+<link rel="stylesheet" type="text/css" href="../css/calendar.css" />
+
+<!-- Bootstrap CSS (Cloudflare CDN) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css" integrity="sha512-T584yQ/tdRR5QwOpfvDfVQUidzfgc2339Lc8uBDtcp/wYu80d7jwBgAxbyMh0a9YM9F8N3tdErpFI8iaGx6x5g==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <!-- jQuery (Cloudflare CDN) -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- Bootstrap Bundle JS (Cloudflare CDN) -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.min.js" integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <div class="col-lg-4">
+  <img src = "../images/userAvatar.png" alt="" class="round"/>
+          <h2>Ласкаво просимо, user2134</h2>
+          <p></p>
+          <p>Відвіданих країн: <b>5</b></p>
+          <p>Кількість залишених відгуків: <b>12</b></p>
+          <p><a class="btn btn-secondary" href="#">Вийти з акаунта</a></p></div>
+          <div class="jzdbox1 jzdbasf jzdcal">
+
+          <div class="jzdcalt">December 2021</div>
+
+          <span>Su</span>
+          <span>Mo</span>
+          <span>Tu</span>
+          <span>We</span>
+          <span>Th</span>
+          <span>Fr</span>
+          <span>Sa</span>
+
+
+          <span class="jzdb"><!--BLANK--></span>
+          <span class="jzdb"><!--BLANK--></span>
+          <span class="jzdb"><!--BLANK--></span>
+          <span class="jzdb"><!--BLANK--></span>
+          <span class="jzdb"><!--BLANK--></span>
+          <span class="jzdb"><!--BLANK--></span>
+          <span>1</span>
+          <span class="circle" data-title="Trip to France!">2</span>
+          <span>3</span>
+          <span>4</span>
+          <span>5</span>
+          <span>6</span>
+          <span>7</span>
+          <span>8</span>
+          <span>9</span>
+          <span>10</span>
+          <span>11</span>
+          <span class="circle" data-title="Museum in Germany!">12</span>
+          <span>13</span>
+          <span>14</span>
+          <span>15</span>
+          <span>16</span>
+          <span>17</span>
+          <span>18</span>
+          <span>19</span>
+          <span>20</span>
+          <span>21</span>
+          <span class="circle" data-title="Trip to Italy">22</span>
+          <span>23</span>
+          <span>24</span>
+          <span>25</span>
+          <span>26</span>
+          <span>27</span>
+          <span>28</span>
+          <span>29</span>
+          <span>30</span>
+          <span class="jzdb"><!--BLANK--></span>
+          <span class="jzdb"><!--BLANK--></span>
+          <span class="jzdb"><!--BLANK--></span>
+          <span class="jzdb"><!--BLANK--></span>
+          <span class="jzdb"><!--BLANK--></span>
+          <span class="jzdb"><!--BLANK--></span>
+          </div>
+
+<div class = "flags">
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<h5>Список країн, де ви були: </h5>
+    <p><img src = "../images/fr.png" class = "img_countr" <h4>    Франція</h4><img src = "../images/gr.png" class = "secondImage" <h4>    Німеччина</h4> </p>
+
+
+    <p><img src = "../images/isr.png" class = "img_countr" <h4>    Ізраїль</h4></p>
+
+    <p><img src = "../images/sk.png" class = "img_countr" <h4>    Південна Корея</h4> </p>
+
+      <p><img src = "../images/usa.png" class = "img_countr"<h4>    США</h4></p>
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class = "blockWithComm">
+        .col-md-6
+          .row.g-0.border.rounded.overflow-hidden.flex-md-row.mb-4.shadow-sm.h-md-250.position-relative
+            .col.p-4.d-flex.flex-column.position-static
+              <h6>Ваш останній коментар</h6>
+              <h4> Франція, Страсбург </h4>
+              .mb-1.text-muted Nov 11
+              <p>Музей сучасного мистецтва <b>✭✭✭✭✭</b></p>
+              <p> Цікаве розташування та дизайн музею, з деякими гарними художніми роботами. Особливо роботи Кандинського привернули мою увагу. Варто відвідати.</p>
+              a.stretched-link(href='#') Детальніше
+            .col-auto.d-none.d-lg-block
+              svg.bd-placeholder-img(width='100' height='323' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='Placeholder: Thumbnail' preserveaspectratio='xMidYMid slice' focusable='false')
+                title Placeholder
+                rect(width='100%'  height='100%' fill='#84c6eb' border-color = '#a0c6ecc9')
+                text(x='50%' y='50%' fill='#eceeef' dy='.3em')
+</div>
