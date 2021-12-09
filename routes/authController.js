@@ -19,7 +19,7 @@ class authController {
             console.log(req)
             const errors = validationResult(req)
             if (!errors.isEmpty()) {
-                return "Ошибка при регистрации"
+                return "Помилка під час реєстрації"
             }
 
             const username = req.body.login
@@ -35,31 +35,31 @@ class authController {
             const containsLetters = /^.*[a-zA-Z]+.*$/
 
             if(!regexEmail.test(String(username).toLowerCase())){
-                return "Пошта неправильна"
+                return "(неправильна пошта)"
             }
             const candidate = await User.findOne({username})
             if (candidate) {
-                return "Користувач з таким логіном зареєстрованний"
+                return "Користувач із таким логіном зареєстрований"
             }
             if(password != passwordRepeat){
-                return "Паролі не співпадають"
+                return "(паролі не співпадають)"
             }
             if(password  == '' && passwordRepeat == ''){
                 return "Пароль не може бути пустим"
             }
             if(!containsLetters.test(String(password).toLowerCase())){
-                return "В паролі не повинно бути кирилиці"
+                return "У паролі не повинно бути кирилиці"
             }
             if(!regexPhone.test(String(phoneNumber).toLowerCase())){
-                return "Телефон неправильний"
+                return "(неправильно вказаний номер)"
             }
-            
+
             const hashPassword = bcrypt.hashSync(password, 7);
             const userRole = await Role.findOne({value: "USER"})
             const user = new User({username, password: hashPassword, lastName, firstName, phoneNumber, roles: [userRole.value]})
             await user.save()
-            
-            return "Пользователь успешно зарегистрирован"
+
+            return "Користувач успішно зареєстрований"
         } catch (e) {
             console.log(e)
             res.status(400).json({message: 'Registration error'})
@@ -74,14 +74,14 @@ class authController {
             const regexEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
             if(!regexEmail.test(String(username).toLowerCase())){
-                return 'Пошта неправильна'
+                return '(неправильна пошта)'
             }
             if (!user) {
                 return 'Користувач не знайден'
             }
             const validPassword = bcrypt.compareSync(password, user.password)
             if (!validPassword) {
-                return 'Неправильний пароль'
+                return '(неправильний пароль)'
             }
             const token = generateAccessToken(user._id, user.roles)
             if(username == 'admin@gmail.com'){
@@ -98,7 +98,7 @@ class authController {
     }
 
     async getUsers(req, res) {
-        try {      
+        try {
             const users = await User.find()
             res.json(users)
         } catch (e) {
