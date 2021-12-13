@@ -57,7 +57,7 @@ router.post('/login', async (req, res)=>{
         errPassword = err;
     }
     else if(err == 1){
-        res.redirect('/AreaA/adminArea')
+        res.redirect('/admin/')
     }
     else if(err == 0){
         res.redirect('/AreaP/personalArea')
