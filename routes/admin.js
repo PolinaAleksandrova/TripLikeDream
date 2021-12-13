@@ -24,11 +24,26 @@ router.get('/', jsonParser,(req,res)=>{
     res.render('admin', {})
 })
 router.post('/post', upload.single('image'), (req, res)=>{
+    console.log(req.file);
+    var x = new countrymodel();
+    x.name =req.body.name;
+    x.image = req.file.filename;
+    x.save((err, doc)=>{
+        if(!err){
+            console.log('saved succesfully')
+            res.redirect('/')
+        } else {
+            console.log(err);
+        }
+
+    })
+})
 router.post('/countryadd', upload.single('image'), (req, res)=>{
     console.log(req.file);
     var x = new countrymodel();
     x.name =req.body.name;
     x.image = req.file.filename;
+    x.about = req.body.about;
     x.save((err, doc)=>{
         if(!err){
             console.log('saved succesfully')
@@ -59,6 +74,7 @@ router.post('/placepost', jsonParser, (req, res)=>{
     x.name =req.body.name;
     x.country = req.body.country;
     x.category = req.body.category;
+    x.about = req.body.about;
     x.save((err, doc)=>{
         if(!err){
             console.log('saved succesfully')
