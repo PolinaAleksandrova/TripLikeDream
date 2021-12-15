@@ -1,0 +1,80 @@
+@import url(https://fonts.googleapis.com/css?family=Fjalla+One:400|Roboto:400,400italic,700);
+
+body {
+  background-color:#282423;
+}
+
+.jzdbox1 {
+  width:577px;
+  background:#332f2e;
+  border-radius:5px;
+  overflow:hidden;
+  display:block;
+  margin-bottom:10px;
+  box-shadow:0 0 10px #a0c6ecc9;
+  margin:0 auto;
+  margin-top:-290px;
+  margin-left:840px;
+  height: 280px;
+}
+
+.jzdcal {
+  padding:0 10px 10px 10px;
+  box-sizing:border-box!important;
+  background:#94D7FF
+  background: -webkit-linear-gradient(#7fc4eb, #a0c6ecc9)!important;
+  background: -o-linear-gradient(#7fc4eb, #a0c6ecc9)!important;
+  background: -moz-linear-gradient(#7fc4eb, #a0c6ecc9)!important;
+  background: linear-gradient(#7fc4eb, #a0c6ecc9)!important;
+}
+
+.jzdcalt {
+  font:18px 'Roboto';
+  font-weight:700;
+  color:#f7f3eb;
+  display:block;
+  margin:18px 0 0 0;
+  text-transform:uppercase;
+  text-align:center;
+  letter-spacing:1px;
+}
+
+.jzdcal span {
+  font:11px 'Roboto';
+  font-weight:400;
+  color:#f7f3eb;
+  text-align:center;
+  width:42px;
+  height:42px;
+  display:inline-block;
+  float:left;
+  overflow:hidden;
+  line-height:40px;
+}
+
+.jzdcal .jzdb:before {
+  opacity:0.3;
+  content:'o';
+}
+
+.circle {
+  border:1px solid #f7f3eb;
+  box-sizing:border-box!important;
+  border-radius:200px!important;
+}
+
+span[data-title]:hover:after,
+div[data-title]:hover:after {
+  font:11px 'Roboto';
+  font-weight:400;
+  content:attr(data-title);
+  position:absolute;
+  margin:0 0 100px;
+  background:#282423;
+  border:1px solid #f7f3eb;
+  color:#f7f3eb;
+  padding:5px;
+  z-index:9999;
+  min-width:150px;
+  max-width:150px;
+}

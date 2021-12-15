@@ -5,7 +5,7 @@ block css
 block content
    <center>
       <pre>
-      <form action="/placepost" method="POST">
+      <form action="/admin/placepost" method="POST">
          <label><b>Place Name</b></label>
          <input type="text" name="name" placeholder="input place name">
          <select name = "country">
@@ -16,6 +16,8 @@ block content
          each category in categories
              option(value=category.id) #{category.name}
          </select>
+         <label><b>About</b></label>
+         <textarea name="about" cols="40" rows="5"></textarea>
          <button type="submit">Save</button>
          </form>
       </pre>

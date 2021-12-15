@@ -2,21 +2,23 @@ extends layout.pug
 
 block css
    <link rel="stylesheet" type="text/css" href="../css/main.css" />
-   
+
 block title
     <title>TreepLikeDream</title>
 
 
 block content
-    mixin placelist(name)
+    mixin placelist(name,image)
         .countrylist
-            a(href='place?'+name)
+            a(href='place/'+name)
+                img(src="../"+image)
                 p=name
 
     .aboutcountry
-            p #{country.name}
-            p #{country.about}
+        center
+            h1 #{country.name}
+        p #{country.about}
 
     <center><h1>Визначні місця</h1></center>
-    each item in items
-        +placelist(item.name)
+    each img, index in imges
+           +placelist(places[index].name,img.image)
