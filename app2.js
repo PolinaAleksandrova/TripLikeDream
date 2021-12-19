@@ -7,6 +7,7 @@ const defaultRout = require("./routes")
 const adminRout = require("./routes/admin")
 const personalAreaRout = require('./routes/personalAreaRout')
 const adminAreaRout = require('./routes/adminAreaRout')
+const cookieParser = require('cookie-parser')
 
 module.exports = class Applicaction {
     constructor() {
@@ -24,6 +25,7 @@ module.exports = class Applicaction {
         this.app.use(morgan('dev'));
         this.app.use(express.urlencoded({extended: false}));
         this.app.use(express.json());
+        this.app.use(cookieParser())
     }
     routes() {
         this.app.use("/AreaP", personalAreaRout)
