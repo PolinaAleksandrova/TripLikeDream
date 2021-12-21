@@ -20,6 +20,14 @@ const User = new Schema({
     phoneNumber: {
         type: String
     },
+    countCountry: {
+        type: Number,
+        default: 0
+    },
+    countComments: {
+        type: Number,
+        default: 0
+    },
     roles: [{
         type: String, 
         ref: 'Role'
