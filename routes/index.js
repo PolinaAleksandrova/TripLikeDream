@@ -48,11 +48,11 @@ router.get('/country/:country', jsonParser,async(req,res)=>{
 router.get('/country/place/:place', jsonParser,(req,res)=>{
     placemodel.findOne({name: req.params["place"]})
     .then(async place => {
-        await imagemodel.find({place: place._id})
+        imagemodel.findOne({place: place._id})
         .then(image => {
             res.render('place', {
-                places: place,
-                imges: image
+                place: place,
+                image: image
             })
         })
         .catch(err => console.log('Caught:', err.message));
