@@ -1,0 +1,72 @@
+header {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.admin_header .nav-bar{
+  position : relative;
+  width: 1278px;
+  height: 70px;
+  background: #5588A5;
+  border-radius: 8px;
+  font-size: 0;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0,.1);
+}
+
+.admin_header .nav-bar a{
+  font-size: 16px;
+  color: white;
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin: 0 35px;
+  top: 25%;
+  text-align: center;
+}
+
+.admin_header .nav-bar a:nth-child(1){
+  width: 100px;
+}
+.admin_header .nav-bar a:nth-child(2){
+  width: 200px;
+}
+.admin_header .nav-bar a:nth-child(3){
+  width: 200px;
+}
+.admin_header .nav-bar a:nth-child(4){
+  width: 200px;
+}
+.admin_header .nav-bar a:nth-child(5){
+  width: 200px;
+}
+
+.admin_header .nav-bar .animation{
+  position: absolute;
+  height: 100%;
+  top: 0;
+  z-index: 0;
+  background: #7DC6EF;
+  border-radius: 8px;
+  transition: all .9s ease 0s;
+}
+
+.admin_header .nav-bar .start-admin,a:nth-child(1):hover~.animation{
+    width: 173px;
+    left: 0;
+}
+.admin_header .nav-bar .start-place,a:nth-child(2):hover~.animation{
+    width: 265px;
+    left: 173px;
+}
+.admin_header .nav-bar .start-categoryadd,a:nth-child(3):hover~.animation{
+    width: 275px;
+    left: 438px;
+}
+.admin_header .nav-bar .start-countryadd,a:nth-child(4):hover~.animation{
+    width: 265px;
+    left: 713px;
+}
+.admin_header .nav-bar .start-imgadd,a:nth-child(5):hover~.animation{
+    width: 300px;
+    left: 978px;
+}
