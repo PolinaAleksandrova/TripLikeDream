@@ -12,12 +12,13 @@ const router = Router();
 
 var places;
 var mas;
-router.get('/', jsonParser,(req,res)=>{
+router.get('/', authMiddleware, jsonParser,(req,res)=>{
     countrymodel.find({}, function(err, docs){
         res.render('index', {
             items : docs
         })
     })
+    console.log(req.temp)
 })
 router.get('/country/:country', jsonParser,async(req,res)=>{
     countrymodel.findOne({name:req.params["country"]})
@@ -52,10 +53,10 @@ router.get('/country/:country', jsonParser,async(req,res)=>{
 })
 router.route('/country/place/:place')
 .get(jsonParser,(req,res)=>{
+    console.log(req.params["place"])
     placemodel.findOne({name: req.params["place"]})
     .then(async place => {
         const comments = await Comment.find({place: place._id}).populate({ path: 'user' }).lean();
-        console.log(comments[0].user[0].lastName)
         imagemodel.findOne({place: place._id})
         .then(image => {
             res.render('place', {
@@ -82,4 +83,5 @@ router.route('/country/place/:place')
     await newComment.save();
     res.redirect('#');
 })
+
 module.exports = router;
