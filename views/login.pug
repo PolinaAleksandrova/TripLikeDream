@@ -14,11 +14,11 @@ block css
   <form action="/auth/login" method="POST">
     <div class="txt_field">
       <input type="text" name="login" class="form-control" required>
-      <label>Введіть email <span>#{errLogin}</span></label>
+      <label>Введіть email <span class ="error">#{errLogin}</span></label>
     </div>
     <div class="txt_field">
       <input type="password" name="password" class="form-control" required>
-      <label>Введіть пароль<span>#{errPassword}</span></label>
+      <label>Введіть пароль<span class ="error">#{errPassword}</span></label>
     </div>
     <div class = "pass">Забули пароль?</div>
     <button type="submit" class="btn btn-outline-primary btn-lg btn-block">Увійти</button>
