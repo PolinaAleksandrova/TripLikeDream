@@ -21,11 +21,22 @@ router.get('/personalArea', authMiddleware, async (req,res)=>{
     })
     .lean()
     const lastComment = Comments[Comments.length - 1]
+    var check = false
     var lastName = user.lastName
-    var firstName = user.firstName
-    var countCountry = user.countCountry
+    var firstName = user.firstName 
+    var countCountry = user.countCountry 
     var countComments = user.countComments
-    res.render('personalArea', {validation, lastName, firstName, countCountry, countComments, lastComment});
+    var countryName 
+    var placeName
+    var contentComment
+    if(lastComment){
+        check = true
+        countryName = lastComment.place[0].country.name
+        placeName = lastComment.place[0].name
+        contentComment = lastComment.content
+    }
+    console.log(check)
+    res.render('personalArea', {validation, lastName, firstName, countCountry, countComments, countryName, placeName, contentComment, check});
 })
 
 module.exports = router;

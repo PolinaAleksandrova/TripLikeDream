@@ -7,6 +7,7 @@ var Comment = require('../schemas/Comment')
 var User = require('../schemas/User')
 const authMiddleware = require('../middlewaree/authMiddleware');
 const { findOneAndUpdate } = require('../schemas/Comment');
+const { redirect } = require('express/lib/response');
 var jsonParser = bodyParser.json({ extended: false });
 const router = Router();
 
