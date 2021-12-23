@@ -1,0 +1,58 @@
+
+
+.center {
+  top: 50%;
+}
+
+.area_desc{
+  color: #5588A5;
+
+
+}
+.center .needSomeSpace{
+  height: 20px;
+}
+textarea{
+  border-color: #7DC6EF;
+    border-radius: 8px;
+}
+
+input[type = "file"]{
+  display: none;
+}
+label .file{
+  color: white;
+  height: 60px;
+  width: 250px;
+  background-color: blue;
+  position: absolute;;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+}
+span{
+  color: #5588A5;
+  margin-left: 24px;
+  float: left;
+
+}
+p {
+  margin-top: -26px;
+    margin-left: 64px;
+    position: absolute;
+    color: #5588A5;
+
+}
+.border_file{
+  border: 1px double black; /* Параметры границы *//* Цвет фона */
+    padding: 3px; /* Поля вокруг текста */
+border-radius: 8px;
+border-color:#5588A5;
+}

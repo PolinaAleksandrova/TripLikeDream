@@ -128,7 +128,7 @@ h2{
   font-family: 'Century Gothic';
   font-weight: normal;
 }
-span{
+.center .txt_field .error{
   color: red;
   text-align: center;
 }
