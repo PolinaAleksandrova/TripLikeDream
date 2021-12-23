@@ -3,9 +3,6 @@ extends layout.pug
 block css
    <link rel="stylesheet" type="text/css" href="../css/main.css" />
 
-block title
-    <title>TreepLikeDream</title>
-
 
 block content
     mixin placelist(name,image)
@@ -15,7 +12,9 @@ block content
                 p=name
 
     .aboutcountry
-            p #{country.name}
+        center
+            h1 #{country.name}
+        p #{country.about}
 
     <center><h1>Визначні місця</h1></center>
     each img, index in imges

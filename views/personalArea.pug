@@ -1,6 +1,6 @@
+block header
+include header.pug
 
-block headerForRegist
-include headerForRegist.pug
 block css
 <link rel="stylesheet" type="text/css" href="../css/authStyle.css" />
 <link rel="stylesheet" type="text/css" href="../css/main.css" />
@@ -16,10 +16,10 @@ block css
 
   <div class="col-lg-4">
   <img src = "../images/userAvatar.png" alt="" class="round"/>
-          <h2>Ласкаво просимо, user2134</h2>
+          <h2>Ласкаво просимо, #{lastName} #{firstName}</h2>
           <p></p>
-          <p>Відвіданих країн: <b>5</b></p>
-          <p>Кількість залишених відгуків: <b>12</b></p>
+          <p>Відвіданих країн: <b>#{countCountry}</b></p>
+          <p>Кількість залишених відгуків: <b>#{countComments}</b></p>
           <p><a class="btn btn-secondary" href="#">Вийти з акаунта</a></p></div>
           <div class="jzdbox1 jzdbasf jzdcal">
 
