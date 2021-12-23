@@ -20,7 +20,7 @@ block css
           <p></p>
           <p>Відвіданих країн: <b>#{countCountry}</b></p>
           <p>Кількість залишених відгуків: <b>#{countComments}</b></p>
-          <p><a class="btn btn-secondary" href="#">Вийти з акаунта</a></p></div>
+          <p><a class="btn btn-secondary" href="/auth/logout">Вийти з акаунта</a></p></div>
           <div class="jzdbox1 jzdbasf jzdcal">
 
           <div class="jzdcalt">December 2021</div>
@@ -102,20 +102,33 @@ block css
 
 
 
-
-<div class = "blockWithComm">
-        .col-md-6
-          .row.g-0.border.rounded.overflow-hidden.flex-md-row.mb-4.shadow-sm.h-md-250.position-relative
-            .col.p-4.d-flex.flex-column.position-static
-              <h6>Ваш останній коментар</h6>
-              <h4> #{lastComment.place[0].country.name} </h4>
-              .mb-1.text-muted Nov 11
-              <p>#{lastComment.place[0].name} <b>✭✭✭✭✭</b></p>
-              <p> #{lastComment.content}</p>
-              a.stretched-link(href=('http://localhost:4000/country/place/' + lastComment.place[0].name)) Детальніше
-            .col-auto.d-none.d-lg-block
-              svg.bd-placeholder-img(width='100' height='323' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='Placeholder: Thumbnail' preserveaspectratio='xMidYMid slice' focusable='false')
-                title Placeholder
-                rect(width='100%'  height='100%' fill='#84c6eb' border-color = '#a0c6ecc9')
-                text(x='50%' y='50%' fill='#eceeef' dy='.3em')
-</div>
+if(check)
+  <div class = "blockWithComm">
+          .col-md-6
+            .row.g-0.border.rounded.overflow-hidden.flex-md-row.mb-4.shadow-sm.h-md-250.position-relative
+              .col.p-4.d-flex.flex-column.position-static
+                <h6>Ваш останній коментар</h6>
+                <h4> #{countryName} </h4>
+                .mb-1.text-muted Nov 11
+                <p>#{placeName} <b>✭✭✭✭✭</b></p>
+                <p> #{contentComment}</p>
+                a.stretched-link(href=('http://localhost:4000/country/place/' + placeName)) Детальніше
+              .col-auto.d-none.d-lg-block
+                svg.bd-placeholder-img(width='100' height='323' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='Placeholder: Thumbnail' preserveaspectratio='xMidYMid slice' focusable='false')
+                  title Placeholder
+                  rect(width='100%'  height='100%' fill='#84c6eb' border-color = '#a0c6ecc9')
+                  text(x='50%' y='50%' fill='#eceeef' dy='.3em')
+  </div>
+else 
+  <div class = "blockWithComm">
+          .col-md-6
+            .row.g-0.border.rounded.overflow-hidden.flex-md-row.mb-4.shadow-sm.h-md-250.position-relative
+              .col.p-4.d-flex.flex-column.position-static
+                <h6>Ваш останній коментар</h6>
+                <h4>  </h4>            
+              .col-auto.d-none.d-lg-block
+                svg.bd-placeholder-img(width='100' height='323' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='Placeholder: Thumbnail' preserveaspectratio='xMidYMid slice' focusable='false')
+                  title Placeholder
+                  rect(width='100%'  height='100%' fill='#84c6eb' border-color = '#a0c6ecc9')
+                  text(x='50%' y='50%' fill='#eceeef' dy='.3em')
+  </div>

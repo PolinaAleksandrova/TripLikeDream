@@ -7,13 +7,22 @@ const authMiddleware = require('../middlewaree/authMiddleware')
 var Comment = require('../schemas/Comment')
 var bodyParser = require("body-parser")
 var jsonParser = bodyParser.json({ extended: false });
+var User = require('../schemas/User')
+const { findOneAndUpdate } = require('../schemas/Comment');
+const { redirect } = require('express/lib/response');
 const router = Router();
 var places;
 var mas;
 router.get('/', jsonParser,(req,res)=>{
+    var validation = false
+    var token = req.cookies.auth
+    if(token){
+        validation = true;
+    }
     countrymodel.find({}, function(err, docs){
         res.render('index', {
-            items : docs
+            items : docs,
+            validation: validation
         })
     })
 })
@@ -43,36 +52,42 @@ router.get('/country/:country-:flag', jsonParser,async(req,res)=>{
 })
 
 router.get('/country/:country', jsonParser,async(req,res)=>{
-    categorymodel.find()
+  
+    var validation = false
+    var token = req.cookies.auth
+    if(token){
+        validation = true;
+    }  
+  categorymodel.find()
     .then(flags => {
-        countrymodel.findOne({name:req.params["country"]})
-        .then(country => {
-            placemodel.find({country: country._id})
-            .then(async place => {
-                mas = [place.length];
-                for (var i in place){
-                    await imagemodel.findOne({place: place[i]._id})
-                    .then(image => {
-                        mas[i] = image
-                    })
-                    .catch(err => console.log('Caught:', err.message));
-                }
-                places = place;
-                return places;
-            })
-            .then(place => {
-                // console.log("country._id " + country._id)
-                // console.log("place " + place)
-                // console.log("mas " + mas)
-                // console.log("id " + mas[0].image)
-                console.log("flags " + flags)
-                res.render('country', {
-                    country : country,
-                    places: place,
-                    imges: mas,
-                    flags: flags
+    countrymodel.findOne({name:req.params["country"]})
+    .then(country => {
+        placemodel.find({country: country._id})
+        .then(async place => {
+            mas = [place.length];
+            for (var i in place){
+                await imagemodel.findOne({place: place[i]._id})
+                .then(image => {
+                    mas[i] = image
                 })
+                .catch(err => console.log('Caught:', err.message));
+            }
+            places = place;
+            return places;
+        })
+        .then(place => {
+            console.log("country._id " + country._id)
+            console.log("place " + place)
+            console.log("mas " + mas)
+            console.log("id " + mas[0].image)
+            res.render('country', {
+                country : country,
+                places: place,
+                imges: mas,
+                validation: validation
+                flags: flags
             })
+        })
             .catch(err => console.log('Caught:', err.message));
         })
         .catch(err => console.log('Caught:', err.message));
