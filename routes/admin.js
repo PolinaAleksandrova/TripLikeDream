@@ -5,6 +5,7 @@ const countrymodel = require('../schemas/country-schema')
 const categorymodel = require('../schemas/category-schema')
 const placemodel = require('../schemas/place-schema')
 const imagemodel = require('../schemas/image-schema')
+var Comment = require('../schemas/Comment')
 var path = require("path")
 var bodyParser = require("body-parser")
 var jsonParser = bodyParser.json({ extended: false });
@@ -47,7 +48,7 @@ router.post('/countryadd', upload.single('image'), (req, res)=>{
     x.save((err, doc)=>{
         if(!err){
             console.log('saved succesfully')
-            res.redirect('/')
+            res.redirect('listCountry')
         } else {
             console.log(err);
         }
@@ -78,7 +79,7 @@ router.post('/placepost', jsonParser, (req, res)=>{
     x.save((err, doc)=>{
         if(!err){
             console.log('saved succesfully')
-            res.redirect('/')
+            res.redirect('listPlace')
         } else {
             console.log(err);
         }
@@ -138,10 +139,92 @@ router.post('/imgadd', upload.single('image'),(req,res)=>{
 
     })
 })
+router.get('/listPlace', async(req,res)=>{
+    var places = await placemodel.find().populate({path: 'country'}).populate({path: 'category'}).lean();
+    res.render('listPlace', {places})
+})
+router.route('/editPlace/:id')
+    .get(async (req, res) => {
+        const { id } = req.params;
+        const place = await placemodel.findById(id).lean();
+        const countries = await countrymodel.find().lean();
+        const categories  = await categorymodel.find().lean();
+        res.render('editPlace', { place, countries, categories });
+    })
+    .post(async (req, res) => {
+        const { id } = req.params;
+        const { name, category, country, about} = req.body;
+        await placemodel.findByIdAndUpdate(id, {
+            name, category, country, about
+        }).lean();
+        res.redirect('/admin/listPlace');
+    })
+router.get('/deletePlace/:id', async(req,res)=>{
+    const { id }= req.params;
+    await placemodel.findByIdAndDelete(id);
+    res.redirect('/admin/listPlace')
+})
+router.get('/listCategory', async(req,res)=>{
+    var categories = await categorymodel.find().lean();
+    res.render('listCategory', {categories})
+})
+router.route('/editCategory/:id')
+    .get(async (req, res) => {
+        const { id } = req.params;
+        const category = await categorymodel.findById(id).lean();
+        res.render('editCategory', { category });
+    })
+    .post(async (req, res) => {
+        const { id } = req.params;
+        const { name } = req.body;
+        await categorymodel.findByIdAndUpdate(id, {
+            name
+        }).lean();
+        res.redirect('/admin/listCategory');
+    })
+router.get('/deleteCategory/:id', async(req,res)=>{
+    const { id }= req.params;
+    await categorymodel.findByIdAndDelete(id);
+    res.redirect('/admin/listCategory')
+})
+router.get('/listCountry', async(req,res)=>{
+    var countries = await countrymodel.find().lean();
+    res.render('listCountry', {countries})
+})
+router.get('/deleteCountry/:id', async(req,res)=>{
+    const { id }= req.params;
+    await countrymodel.findByIdAndDelete(id);
+    res.redirect('/admin/listCountry')
+})
+router.route('/editCountry/:id')
+    .get(async (req, res) => {
+        const { id } = req.params;
+        const country = await countrymodel.findById(id).lean();
+        res.render('editCountry', { country });
+    })
+    .post(async (req, res) => {
+        const { id } = req.params;
+        const { name } = req.body;
+        await countrymodel.findByIdAndUpdate(id, {
+            name
+        }).lean();
+        res.redirect('/admin/listCountry');
+    })
+router.get('/listComment', async(req,res)=>{
+    var comments = await Comment.find().populate({path: 'place'}).populate({path: 'user'}).lean();
+    console.log(comments[0].place[0].name)
+    res.render('listComment', {comments})
+})
+router.get('/deleteComment/:id', async(req,res)=>{
+    const { id }= req.params;
+    await Comment.findByIdAndDelete(id);
+    res.redirect('/admin/listComment')
+})
 router.use("/categoryadd", function(request, response){
     response.render("categoryadd", {})
 });
 router.use("/countryadd", function(request, response){
     response.render("countryadd", {})
 });
+
 module.exports = router;
