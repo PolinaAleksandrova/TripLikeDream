@@ -8,9 +8,10 @@ block header
         <li><a href = "#">Статті</a></li>
         <li><a href = "#">Зворотній зв'язок</a></li>
       </ul>
-      if(num > 2)
+      if(validation)
         <div class = "btns">
-          <a href = "/auth/login" class = "btn_blue">Вихід</a>     
+          <a href = "/AreaP/personalArea" class = "btn_light">Особистий кабінет</a>
+          <a href = "/auth/logout" class = "btn_blue">Вихід</a>     
         </div>
       else 
         <div class = "btns">
@@ -22,3 +23,8 @@ block header
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+script.
+  var a = 2;
+  console.log(a);
+
