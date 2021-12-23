@@ -10,17 +10,28 @@ const { findOneAndUpdate } = require('../schemas/Comment');
 var jsonParser = bodyParser.json({ extended: false });
 const router = Router();
 
+
 var places;
 var mas;
-router.get('/', authMiddleware, jsonParser,(req,res)=>{
+router.get('/', jsonParser,(req,res)=>{
+    var validation = false
+    var token = req.cookies.auth
+    if(token){
+        validation = true;
+    }
     countrymodel.find({}, function(err, docs){
         res.render('index', {
-            items : docs
+            items : docs,
+            validation: validation
         })
     })
-    console.log(req.temp)
 })
 router.get('/country/:country', jsonParser,async(req,res)=>{
+    var validation = false
+    var token = req.cookies.auth
+    if(token){
+        validation = true;
+    }
     countrymodel.findOne({name:req.params["country"]})
     .then(country => {
         placemodel.find({country: country._id})
@@ -44,7 +55,8 @@ router.get('/country/:country', jsonParser,async(req,res)=>{
             res.render('country', {
                 country : country,
                 places: place,
-                imges: mas
+                imges: mas,
+                validation: validation
             })
         })
         .catch(err => console.log('Caught:', err.message));
@@ -53,7 +65,11 @@ router.get('/country/:country', jsonParser,async(req,res)=>{
 })
 router.route('/country/place/:place')
 .get(jsonParser,(req,res)=>{
-    console.log(req.params["place"])
+    var validation = false
+    var token = req.cookies.auth
+    if(token){
+        validation = true;
+    }
     placemodel.findOne({name: req.params["place"]})
     .then(async place => {
         const comments = await Comment.find({place: place._id}).populate({ path: 'user' }).lean();
@@ -62,7 +78,8 @@ router.route('/country/place/:place')
             res.render('place', {
                 comments: comments,
                 place: place,
-                image: image
+                image: image,
+                validation: validation
             })
         })
         .catch(err => console.log('Caught:', err.message));
