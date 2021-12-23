@@ -84,6 +84,7 @@ class authController {
                 return '(неправильний пароль)'
             }
             const token = generateAccessToken(user._id, user.roles)
+            res.cookie('auth', token);
             if(username == 'admin@gmail.com'){
                 return 1;
             }
