@@ -18,8 +18,7 @@ block content
             <input type="submit" value="Вже відвідав" />
          </form>
    .geoandfacts
-      p(class="placefact")=place.fact
-      img(class="geoimg" src=place.geo)
+      <iframe src=#{place.geo} width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 
    <form action="#"  method="POST">
       <p><b>Комментарии:</b></p>
