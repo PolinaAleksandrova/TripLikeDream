@@ -84,8 +84,8 @@ router.get('/country/:country', jsonParser,async(req,res)=>{
                 country : country,
                 places: place,
                 imges: mas,
-                validation: validation
-
+                validation: validation,
+                flags: flags
             })
         })
             .catch(err => console.log('Caught:', err.message));
