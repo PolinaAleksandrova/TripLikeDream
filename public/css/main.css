@@ -138,5 +138,24 @@ h2{
 
 }
 header .space_betw{
-
+}
+.filter{
+  background-color: silver;
+  display: inline-block ;
+  margin-left: 60px;;
+}
+.pdesc{
+  display: inline-block ;
+  
+}
+.pdesc,.placeimg{
+  height: 450px;
+}
+.geoandfacts{
+  display: inline-block ;
+  margin-left: 20px;
+}
+.wrapper{
+  padding-left: 50px;
+  padding-right: 50px;
 }
