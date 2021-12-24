@@ -10,6 +10,9 @@ const alreadyVisit = require("./routes/alreadyVisit")
 const personalAreaRout = require('./routes/personalAreaRout')
 const adminAreaRout = require('./routes/adminAreaRout')
 const cookieParser = require('cookie-parser')
+const eventsRout = require('./routes/event')
+const feedbackRout = require('./routes/feedback')
+const articleRout = require('./routes/article')
 
 module.exports = class Applicaction {
     constructor() {
@@ -30,6 +33,9 @@ module.exports = class Applicaction {
         this.app.use(cookieParser())
     }
     routes() {
+        this.app.use("/eventR", eventsRout)
+        this.app.use("/articleR", articleRout)
+        this.app.use("/feedbackR", feedbackRout)
         this.app.use("/AreaP", personalAreaRout)
         this.app.use("/AreaA", adminAreaRout)
         this.app.use("/auth", authRouter)
