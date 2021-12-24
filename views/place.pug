@@ -4,29 +4,32 @@ block css
    <link rel="stylesheet" type="text/css" href="../../css/main.css" />
 
 block content
-   h3=place.name
-   .pdesc
-      img(class="placeimg" src="../../"+image.image)
-      .pdesctext
-         p(class="desctext")=place.about
-         <form action="/wantVisit" method="POST">
-            <input name="place" value=#{place._id} visibiliti: hidden>
-            <input type="submit" value="Бажаю відвідати" />
-         </form>
-         <form action="/alreadyVisit" method="POST">
-            <input name="place" value=#{place._id} visibiliti: hidden>
-            <input type="submit" value="Вже відвідав" />
-         </form>
-   .geoandfacts
-      <iframe src=#{place.geo} width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+   .wrapper
+      center
+         h3=place.name
+      .pdesc
+         img(class="placeimg" src="../../"+image.image)
+         .geoandfacts
+          <iframe src=#{place.geo} width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+         .pdesctext
+            p(class="desctext")=place.about
+               <form action="/alreadyVisit" method="POST">
+               <input name="place" value=#{place._id} visibiliti: hidden>
+               <input type="submit" value="Вже відвідав" />
+            </form>
+            <form action="/wantVisit" method="POST">
+               <input name="place" value=#{place._id} visibiliti: hidden>
+               <input type="submit" value="Не відвідав" />
+            </form>
+         
+   
+      <form action="#"  method="POST">
+         <p><b>Комментарии:</b></p>
+         <p><textarea name="content" placeholder="Напишите комментарий"></textarea></p>
+         <p><button type="submit">Отправить</button><p>
+      </form>
 
-   <form action="#"  method="POST">
-      <p><b>Комментарии:</b></p>
-      <p><textarea name="content" placeholder="Напишите комментарий"></textarea></p>
-      <p><button type="submit">Отправить</button><p>
-   </form>
-
-   each comment in comments
-      .comment-content
-         p #{comment.user[0].lastName} #{comment.user[0].firstName}
-         p #{comment.content}
+      each comment in comments
+         .comment-content
+            p #{comment.user[0].lastName} #{comment.user[0].firstName}
+            p #{comment.content}
