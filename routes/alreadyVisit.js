@@ -24,8 +24,8 @@ router.post('/', authMiddleware, async(req,res)=>{
 
         var visit = await Visit.findOne({user: user._id, place: place._id})
         if (visit != null){
-            visit.visitedPlace = false;
-            visit.wantToVisit = true;
+            visit.visitedPlace = true;
+            visit.wantToVisit = false;
             visit.save((err, doc)=>{
                 if(!err){
                     console.log('saved succesfully')
@@ -39,8 +39,8 @@ router.post('/', authMiddleware, async(req,res)=>{
         }
         else{
             var newVisit = new Visit()
-            newVisit.visitedPlace = false;
-            newVisit.wantToVisit = true;
+            newVisit.visitedPlace = true;
+            newVisit.wantToVisit = false;
             newVisit.place = place._id;
             newVisit.user = user._id;
             newVisit.save((err, doc)=>{
