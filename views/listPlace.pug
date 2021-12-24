@@ -1,0 +1,27 @@
+extends admin.pug
+block css
+   <link rel="stylesheet" type="text/css" href="../css/main.css" />
+
+block content
+    .place-temp
+        <div class="container p-4">
+        <div class="row">
+            each place in places
+                .place-list
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">                 
+                            <p>#{place.name}</p>    
+                            <p>#{place.about}</p> 
+                            <p>#{place.country.name}</p>
+                            <p>#{place.category.name}</p>         
+                        </div>
+                        <div class="card-footer d-flex justify-content-between align-items-center">
+                            <a href="/admin/deletePlace/#{place._id}" onclick="return confirm('Видалити місце?')" class="btn btn-warning">Видалити</a>
+                            <a href="/admin/editPlace/#{place._id}" class="btn btn-secondary">Редагувати</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                

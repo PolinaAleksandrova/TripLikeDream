@@ -3,7 +3,8 @@ const router = Router();
 const authMiddleware = require('../middlewaree/authMiddleware')
 const User = require('../schemas/User')
 const Comment = require('../schemas/Comment')
-
+const Visit = require('../schemas/Visit')
+const placemodel = require('../schemas/place-schema')
 
 router.get('/personalArea', authMiddleware, async (req,res)=>{
     var validation = false
@@ -20,13 +21,27 @@ router.get('/personalArea', authMiddleware, async (req,res)=>{
         }]
     })
     .lean()
+
+    var visits = await Visit.find({user: user._id,  visitedPlace: true})
+    .lean();
+    var placeMass = [visits.length]
+        console.log(visits)
+    for (var i in visits){
+        await placemodel.findOne({_id: visits[i].place})
+        .then(place => {
+            console.log(place)
+                placeMass[i] = place
+        })
+        .catch(err => console.log('Caught:', err.message));
+    }
+    console.log("place " + placeMass[0].name)
     const lastComment = Comments[Comments.length - 1]
     var check = false
     var lastName = user.lastName
-    var firstName = user.firstName 
-    var countCountry = user.countCountry 
+    var firstName = user.firstName
+    var countCountry = user.countCountry
     var countComments = user.countComments
-    var countryName 
+    var countryName
     var placeName
     var contentComment
     if(lastComment){
@@ -36,7 +51,7 @@ router.get('/personalArea', authMiddleware, async (req,res)=>{
         contentComment = lastComment.content
     }
     console.log(check)
-    res.render('personalArea', {validation, lastName, firstName, countCountry, countComments, countryName, placeName, contentComment, check});
+    res.render('personalArea', {validation, lastName, firstName, countCountry, countComments, countryName, placeName, contentComment, check, placeMass});
 })
 
 module.exports = router;

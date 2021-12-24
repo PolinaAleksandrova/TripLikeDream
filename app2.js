@@ -5,6 +5,8 @@ const path = require('path')
 const authRouter = require('./routes/authRouter')
 const defaultRout = require("./routes")
 const adminRout = require("./routes/admin")
+const wantVisit = require("./routes/wantVisit")
+const alreadyVisit = require("./routes/alreadyVisit")
 const personalAreaRout = require('./routes/personalAreaRout')
 const adminAreaRout = require('./routes/adminAreaRout')
 const cookieParser = require('cookie-parser')
@@ -33,6 +35,8 @@ module.exports = class Applicaction {
         this.app.use("/auth", authRouter)
         this.app.use('/', defaultRout);
         this.app.use('/admin', adminRout);
+        this.app.use('/wantVisit', wantVisit);
+        this.app.use('/alreadyVisit', alreadyVisit);
         this.app.use(express.static(path.join(__dirname, 'public')));
         this.app.use(express.static(path.join(__dirname, 'uploads')));
     }

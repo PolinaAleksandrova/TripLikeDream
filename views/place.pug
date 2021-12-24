@@ -9,12 +9,17 @@ block content
       img(class="placeimg" src="../../"+image.image)
       .pdesctext
          p(class="desctext")=place.about
-         <button class="favorite-button">Бажаю відвідати</button>
-         <button class="favorite-button">Вже відвідував</button>
+         <form action="/wantVisit" method="POST">
+            <input name="place" value=#{place._id} visibiliti: hidden>
+            <input type="submit" value="Бажаю відвідати" />
+         </form>
+         <form action="/alreadyVisit" method="POST">
+            <input name="place" value=#{place._id} visibiliti: hidden>
+            <input type="submit" value="Вже відвідав" />
+         </form>
    .geoandfacts
-      p(class="placefact")=place.fact
-      img(class="geoimg" src=place.geo)
-      
+      <iframe src=#{place.geo} width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
    <form action="#"  method="POST">
       <p><b>Комментарии:</b></p>
       <p><textarea name="content" placeholder="Напишите комментарий"></textarea></p>
@@ -23,6 +28,5 @@ block content
 
    each comment in comments
       .comment-content
-         p #{comment.user[0].lastName} #{comment.user[0].firstName} 
+         p #{comment.user[0].lastName} #{comment.user[0].firstName}
          p #{comment.content}
-   
