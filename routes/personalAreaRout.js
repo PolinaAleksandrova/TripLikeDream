@@ -13,6 +13,15 @@ router.get('/personalArea', authMiddleware, async (req,res)=>{
         validation = true;
     }
     const user = await User.findOne({_id: req.user.id}).lean();
+    if(user.roles == 'USER')
+    {
+        console.log("Вход Пользователя")
+    }
+    else
+    {
+    console.log("Вход Администратора")
+    res.redirect("/admin")
+    }
     const Comments = await Comment.find({user: req.user.id})
     .populate({
         path: 'place',
@@ -21,11 +30,10 @@ router.get('/personalArea', authMiddleware, async (req,res)=>{
         }]
     })
     .lean()
-
     var visits = await Visit.find({user: user._id,  visitedPlace: true})
     .lean();
     var placeMass = [visits.length]
-        console.log(visits)
+        // console.log(visits)
     for (var i in visits){
         await placemodel.findOne({_id: visits[i].place})
         .then(place => {
@@ -34,7 +42,7 @@ router.get('/personalArea', authMiddleware, async (req,res)=>{
         })
         .catch(err => console.log('Caught:', err.message));
     }
-    console.log("place " + placeMass[0].name)
+    // console.log("place " + placeMass[0].name)
     const lastComment = Comments[Comments.length - 1]
     var check = false
     var lastName = user.lastName
@@ -50,7 +58,7 @@ router.get('/personalArea', authMiddleware, async (req,res)=>{
         placeName = lastComment.place[0].name
         contentComment = lastComment.content
     }
-    console.log(check)
+    // console.log(check)
     res.render('personalArea', {validation, lastName, firstName, countCountry, countComments, countryName, placeName, contentComment, check, placeMass});
 })
 

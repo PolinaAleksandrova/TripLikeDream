@@ -76,6 +76,7 @@ router.post('/placepost', jsonParser, (req, res)=>{
     x.country = req.body.country;
     x.category = req.body.category;
     x.about = req.body.about;
+    x.geo = req.body.geo;
     x.save((err, doc)=>{
         if(!err){
             console.log('saved succesfully')
@@ -153,9 +154,9 @@ router.route('/editPlace/:id')
     })
     .post(async (req, res) => {
         const { id } = req.params;
-        const { name, category, country, about} = req.body;
+        const { name, category, country, geo, about} = req.body;
         await placemodel.findByIdAndUpdate(id, {
-            name, category, country, about
+            name, category, country, about, geo
         }).lean();
         res.redirect('/admin/listPlace');
     })

@@ -8,7 +8,6 @@ const adminRout = require("./routes/admin")
 const wantVisit = require("./routes/wantVisit")
 const alreadyVisit = require("./routes/alreadyVisit")
 const personalAreaRout = require('./routes/personalAreaRout')
-const adminAreaRout = require('./routes/adminAreaRout')
 const cookieParser = require('cookie-parser')
 
 module.exports = class Applicaction {
@@ -31,7 +30,6 @@ module.exports = class Applicaction {
     }
     routes() {
         this.app.use("/AreaP", personalAreaRout)
-        this.app.use("/AreaA", adminAreaRout)
         this.app.use("/auth", authRouter)
         this.app.use('/', defaultRout);
         this.app.use('/admin', adminRout);
