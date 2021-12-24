@@ -26,7 +26,8 @@ a{
 }
 header{
   margin: 44px auto;
-  max-width: 85%;
+  max-width: 100%;
+  height: 80px;
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
@@ -37,9 +38,6 @@ header{
   justify-content: space-between;
 }
 
-header .logo{
-  max-width: 250px;
-}
 
 header .right_header{
   display: -webkit-flex;
@@ -134,4 +132,11 @@ h2{
 }
 .needed_space{
   width: 330px;
+}
+.logo{
+  width: 30px;
+
+}
+header .space_betw{
+
 }
