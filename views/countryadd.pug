@@ -1,18 +1,40 @@
 extends admin.pug
 block css
-   <link rel="stylesheet" type="text/css" href="../css/main.css" />
 
+   <link rel="stylesheet" type="text/css" href="../css/main.css" />
+   <link rel="stylesheet" type="text/css" href="../css/authStyle.css" />
+   <link rel="stylesheet" type="text/css" href="../css/adminFormStyle.css" />
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 block content
-   <center>
-      <pre>
-         <form action="/admin/countryadd" method="POST" enctype="multipart/form-data">
-         <label><b>Country Name</b></label>
-         <input type="text" name="name" placeholder="input country name">
-         <label><b>Image</b></label>
-         <input type="file" name="image">
-         <label><b>About</b></label>
-         <textarea name="about" cols="40" rows="5"></textarea>
-         <button type="submit">Save</button>
-         </form>
-      </pre>
-   </center>
+
+   <div class = "center">
+     <h2>Додавання країни</h2>
+     <form action="/admin/countryadd" method="POST" enctype="multipart/form-data">
+       <div class="txt_field">
+         <input type="text" name="name" class="form-control" required>
+         <label>Введіть назву країни</label>
+       </div>
+
+       <input type="file" id="file" accept ="image/*">
+       <label for="file">
+       <div class = "border_file">
+       <span class="material-icons">add_photo_alternate</span> &nbsp;
+       <p class = "addPicture">Додати зображення</p>
+       </div>
+       </label>
+       <div class ="needSomeSpace"></div>
+       <div class="area_desc">
+       <label>Опис</label>
+       </div>
+
+       <div class = "about_area">
+        <textarea name="about" cols="40" rows="5" color:  #7DC6EF></textarea>
+       </div>
+
+       <div class = "butSub"><button type="submit">Зберегти</button></div>
+     </form>
+     <div class ="needSomeSpace"></div>
+   </div>

@@ -1,0 +1,108 @@
+
+
+.center {
+  top: 50%;
+}
+
+.area_desc{
+  color: #5588A5;
+
+
+}
+.center .needSomeSpace{
+  height: 20px;
+}
+textarea{
+  border-color: #7DC6EF;
+    border-radius: 8px;
+    font-size: small;
+}
+
+input[type = "file"]{
+  display: none;
+}
+label .file{
+  color: white;
+  height: 60px;
+  width: 250px;
+  background-color: blue;
+  position: absolute;;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+}
+span{
+  color: #5588A5;
+margin-left: 283px;
+float: left;
+
+}
+p {
+  margin-top: -26px;
+    margin-left: 64px;
+    position: absolute;
+    color: #5588A5;
+
+}
+.border_file{
+  border: 1px double black; /* Параметры границы *//* Цвет фона */
+    padding: 3px; /* Поля вокруг текста */
+border-radius: 8px;
+border-color:#5588A5;
+}
+.kk{
+  margin-top: -200px;
+  position: absolute;
+  margin-left: 600px;
+}
+.gg{
+  margin-top: -180px;
+  position: absolute;
+  margin-left: 625px;
+  position: absolute;
+}
+.dd{
+  margin-top: -180px;
+  position: absolute;
+  margin-left: 625px;
+  position: absolute;
+}
+.hhhh form{
+  margin-top: -200px;
+  margin-left: 625px;
+  position: absolute;
+}
+
+.cent form{
+  margin-top: -200px;
+  margin-left: 625px;
+  position: absolute;
+}
+
+.butSub button[type = "submit"] {
+  margin-top: 20px;
+  margin-left: -34px;
+  position: absolute;
+}
+nput[type="text" i] {
+    padding: 1px 2px;
+    border-radius: 8px;
+      background: #5588A5;
+}
+.butt button[type = "submit"] {
+  margin-top: 20px;
+  margin-left: -145px;
+  position: absolute;
+}
+.fhfh form{
+  margin-top: -200px;
+  margin-left: 625px;
+  position: absolute;
+}

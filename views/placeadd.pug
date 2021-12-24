@@ -1,13 +1,23 @@
 extends admin.pug
 block css
+
    <link rel="stylesheet" type="text/css" href="../css/main.css" />
+   <link rel="stylesheet" type="text/css" href="../css/authStyle.css" />
+   <link rel="stylesheet" type="text/css" href="../css/adminFormStyle.css" />
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+block content
+
+
 
 block content
    <center>
       <pre>
-      <form action="/admin/placepost" method="POST">
-         <label><b>Place Name</b></label>
-         <input type="text" name="name" placeholder="input place name">
+      <div class ="hhhh"><form action="/admin/placepost" method="POST">
+         <h2>Додавання місць</h2>
+         <input type="text" name="name" placeholder="Ввести назву місця">
          <select name = "country">
          each item in items
              option(value=item.id) #{item.name}
@@ -16,9 +26,10 @@ block content
          each category in categories
              option(value=category.id) #{category.name}
          </select>
-         <label><b>About</b></label>
+         <label>Опис</label>
          <textarea name="about" cols="40" rows="5"></textarea>
-         <button type="submit">Save</button>
+         <button type="submit">Зберегти</button>
          </form>
+         </div>
       </pre>
    </center>
