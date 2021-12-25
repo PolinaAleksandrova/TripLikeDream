@@ -70,3 +70,18 @@ header {
     width: 300px;
     left: 978px;
 }
+
+.list{
+    list-style-type: none;
+    border: 2px double black;
+    padding: 3px;
+    border-radius: 8px;
+    border-color: #7DC6EF;
+    width: 190px;
+    margin-left: 70px;
+    margin-bottom: 20px;
+}
+.list a{
+  color: #5588A5;
+  margin-bottom: 20px;
+}

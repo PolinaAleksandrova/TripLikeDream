@@ -1,18 +1,25 @@
 extends admin.pug
+block css
 
+   <link rel="stylesheet" type="text/css" href="../css/main.css" />
+   <link rel="stylesheet" type="text/css" href="../css/authStyle.css" />
+   <link rel="stylesheet" type="text/css" href="../css/adminFormStyle.css" />
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 block content
    <center>
       <pre>
-         <form action="/admin/imgadd" method="POST" enctype="multipart/form-data">
-         <label><b>Country Name</b></label>
-         <input type="text" name="name" placeholder="input image name">
-         <label><b>Image</b></label>
+         <div class ="fhfh"><form action="/admin/imgadd" method="POST" enctype="multipart/form-data">
+         <h2>Додавання зображення</h2>
+         <input type="text" name="name" placeholder="Ввести назву фото">
          <select name = "place">
          each place in places
              option(value=place.id) #{place.name}
          </select>
          <input type="file" name="image">
-         <button type="submit">Save</button>
-         </form>
+         <button type="submit">Зберегти</button>
+         </form></div>
       </pre>
    </center>

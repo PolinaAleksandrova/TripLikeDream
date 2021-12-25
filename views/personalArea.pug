@@ -83,16 +83,9 @@ block css
 <p></p>
 <p></p>
 <p></p>
-<h5>Список країн, де ви були: </h5>
-    <p><img src = "../images/fr.png" class = "img_countr" <h4>    Франція</h4><img src = "../images/gr.png" class = "secondImage" <h4>    Німеччина</h4> </p>
-
-
-    <p><img src = "../images/isr.png" class = "img_countr" <h4>    Ізраїль</h4></p>
-
-    <p><img src = "../images/sk.png" class = "img_countr" <h4>    Південна Корея</h4> </p>
-
-      <p><img src = "../images/usa.png" class = "img_countr"<h4>    США</h4></p>
-
+<h5>Список місць, де ви були: </h5>
+        each visit in placeMass
+                p=visit.name
 </div>
 
 
@@ -119,13 +112,13 @@ if(check)
                   rect(width='100%'  height='100%' fill='#84c6eb' border-color = '#a0c6ecc9')
                   text(x='50%' y='50%' fill='#eceeef' dy='.3em')
   </div>
-else 
+else
   <div class = "blockWithComm">
           .col-md-6
             .row.g-0.border.rounded.overflow-hidden.flex-md-row.mb-4.shadow-sm.h-md-250.position-relative
               .col.p-4.d-flex.flex-column.position-static
                 <h6>Ваш останній коментар</h6>
-                <h4>  </h4>            
+                <h4>  </h4>
               .col-auto.d-none.d-lg-block
                 svg.bd-placeholder-img(width='100' height='323' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='Placeholder: Thumbnail' preserveaspectratio='xMidYMid slice' focusable='false')
                   title Placeholder

@@ -17,9 +17,11 @@ block content
         p #{country.about}
 
     <center><h1>Визначні місця</h1></center>
+      .filterlist 
+        each flag in flags
+            .filter
+                a(href=("/country/"+country.name+"-"+ flag.name))=flag.name
     .placeslist
         each img, index in imges
            +placelist(places[index].name,img.image)
-    .filterlist
-        each flag in flags
-            a(href=("/country/"+country.name+"-"+ flag.name))=flag.name
+  

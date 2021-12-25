@@ -1,19 +1,27 @@
+block css
+   <link rel="stylesheet" type="text/css" href="../css/main.css" />
+
 block header
+
    <header>
-    <a href ="/" class = "logo"><img src = "/img/logo.jpg" alt =""></a>
+
+    <img src = "http://localhost:4000/images/logo.png" width="200" height="200" margin-left: alt ="">
+    <h2>TripLikeDream</h2>
+    <div class = "space_betw"></div>
+
     <div class = "right_header">
       <ul class = "mnu_top">
         <li><a href = "/">Головна</a></li>
-        <li><a href = "#">Події</a></li>
-        <li><a href = "#">Статті</a></li>
-        <li><a href = "#">Зворотній зв'язок</a></li>
+        <li><a href = "/eventR/events">Події</a></li>
+        <li><a href = "/articleR/articles">Статті</a></li>
+        <li><a href = "/feedbackR/feedbacks">Зворотній зв'язок</a></li>
       </ul>
       if(validation)
         <div class = "btns">
           <a href = "/AreaP/personalArea" class = "btn_light">Особистий кабінет</a>
-          <a href = "/auth/logout" class = "btn_blue">Вихід</a>     
+          <a href = "/auth/logout" class = "btn_blue">Вихід</a>
         </div>
-      else 
+      else
         <div class = "btns">
           <a href = "/auth/login" class = "btn_light">Вхід</a>
           <a href = "/auth/registration" class = "btn_blue">Регістрація</a>
@@ -27,4 +35,3 @@ block header
 script.
   var a = 2;
   console.log(a);
-

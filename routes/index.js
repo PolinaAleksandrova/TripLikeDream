@@ -52,12 +52,12 @@ router.get('/country/:country-:flag', jsonParser,async(req,res)=>{
 })
 
 router.get('/country/:country', jsonParser,async(req,res)=>{
-  
+
     var validation = false
     var token = req.cookies.auth
     if(token){
         validation = true;
-    }  
+    }
   categorymodel.find()
     .then(flags => {
     countrymodel.findOne({name:req.params["country"]})

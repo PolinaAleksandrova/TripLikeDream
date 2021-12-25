@@ -1,8 +1,8 @@
 var { Router, Request, Response } = require('express');
 const router = Router();
 
-router.get('/adminArea', (req,res)=>{
-    res.render('adminArea');
+router.get('/events', (req,res)=>{
+    res.render('events');
 })
 
 module.exports = router;
