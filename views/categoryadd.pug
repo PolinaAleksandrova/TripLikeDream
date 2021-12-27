@@ -1,14 +1,23 @@
 extends admin.pug
 block css
-   <link rel="stylesheet" type="text/css" href="../css/main.css" />
 
+   <link rel="stylesheet" type="text/css" href="../css/main.css" />
+   <link rel="stylesheet" type="text/css" href="../css/authStyle.css" />
+   <link rel="stylesheet" type="text/css" href="../css/adminFormStyle.css" />
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 block content
+
    <center>
       <pre>
-         <form action="/categorypost" method="POST">
-         <label><b>category name</b></label>
-         <input type="text" name="name" placeholder="input category name">
-         <button type="submit">Save</button>
+         <div class ="cent"><form action="/admin/categorypost" method="POST">
+         <h2>Додавання категорії</h2>
+         <label>Назва категорії</label>
+         <input type="text" name="name" placeholder="Введіть ім'я категорії'">
+         <div class = "butt"><button type="submit">Зберегти</button></div>
          </form>
+         </div>
       </pre>
    </center>

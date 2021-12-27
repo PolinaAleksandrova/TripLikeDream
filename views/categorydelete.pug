@@ -1,0 +1,17 @@
+extends layout.pug
+block css
+   <link rel="stylesheet" type="text/css" href="../css/main.css" />
+
+block content
+   <center>
+      <pre>
+         <form action="/catdelpost" method="POST">
+         <label><b>category name</b></label>
+         <select name = "category">
+         each category in categories
+             option(value=category.id) #{category.name}
+         </select>
+         <button type="submit">Delete</button>
+         </form>
+      </pre>
+   </center>
